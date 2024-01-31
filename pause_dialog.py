@@ -3,7 +3,6 @@ from button import Button
 import pygame
 import sys
 
-
 def pause(win, restart, home):
   pausing = True
 
@@ -12,9 +11,11 @@ def pause(win, restart, home):
     pausing = False
 
   def replay():
-    restart(win=win)
+    pygame.mixer.pause()
+    restart(win=win, home=home)
 
   def return_home():
+    pygame.mixer.pause()
     home(win=win)
 
   clock = pygame.time.Clock()

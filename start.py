@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import sys
 import os
 from button import Button
@@ -9,9 +10,15 @@ load_dotenv('.env')
 PRIMARY_COLOR = os.environ["PRIMARY_COLOR"]
 print(PRIMARY_COLOR)
 
+mixer.init()
+bg_sound = mixer.Sound('audios/night_bg.mp3')
+
 def start(win):
 
+  bg_sound.play(-1)
+
   def play():
+    mixer.pause()
     in_game(win=win, home=start)
 
   clock = pygame.time.Clock()

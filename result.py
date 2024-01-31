@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import sys
 import os
 from button import Button
@@ -7,12 +8,20 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 PRIMARY_COLOR = os.environ["PRIMARY_COLOR"]
 
+mixer.init()
+bg_sound = mixer.Sound('audios/result.mp3')
+
 def show_result(win, score, miss, restart, home):
 
+  mixer.pause()
+  bg_sound.play()
+
   def replay():
-    restart(win=win)
+    mixer.pause()
+    restart(win=win, home=home)
 
   def return_home():
+    mixer.pause()
     home(win=win)
 
   clock = pygame.time.Clock()

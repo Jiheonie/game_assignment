@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import sys
 import os
 from game_manager import Scoreboard, DialogButton, TimeBar, BoongEffect, MissEffect
@@ -6,12 +7,17 @@ from zombie_hole import ZombieHole
 from pause_dialog import pause
 from result import show_result
 
+mixer.init()
+bg_sound = mixer.Sound('audios/game_playing.mp3')
+
 def in_game(win, home):
 
   clock = pygame.time.Clock()
   FPS = 60
 
   w, h = pygame.display.get_surface().get_size()
+
+  bg_sound.play(-1)
 
   # in-game
   time = 1000

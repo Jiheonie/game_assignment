@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import os
 from dotenv import load_dotenv
 
@@ -111,6 +112,9 @@ class BoongEffect(pygame.sprite.Sprite):
     self.rect.x = dx - 128
     self.rect.y = dy - 72
 
+    self.sound = mixer.Sound('audios/boong.mp3')
+    self.sound.play()
+
     self.lifetime = 10
 
   def draw(self, screen):
@@ -129,6 +133,9 @@ class MissEffect(pygame.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.rect.x = dx - 128
     self.rect.y = dy - 72
+
+    self.sound = mixer.Sound('audios/miss.mp3')
+    self.sound.play()
 
     self.lifetime = 10
 
